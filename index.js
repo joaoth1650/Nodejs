@@ -1,11 +1,11 @@
 const Perguntas = [
-  "O que aprendi hoje?",
-  "O que me deixou puto da vida? E como posso melhorar?",
-  "O que me alegrou?",
-  "Consegui fazer algo que ajudasse alguem?"
+  "Conseguiu acordar e ir para escola?",
+  "Fez as duas refeições certinho?",
+  "Algo te deixou feliz?",
+  "Aprendeu o que hoje?"
 ]
 
-const ask = (index = 0 ) => {
+const ask = (index = 0) => {
   process.stdout.write("\n\n" + Perguntas[index] + " > ")
 }
 
@@ -17,7 +17,26 @@ process.stdin.on('data', data => {
   if (answers.length < Perguntas.length) {
     ask (answers.length)
   }else {
-    console.log(answers)
     process.exit()
   }
+})
+
+process.on('exit', () => {
+  console.log(`
+   Ok agora vamos rever suas respostas
+
+   Conseguiu ir para escola:
+   ${answers[0]}
+
+   Fez as duas refeições? (cafe d'manha e almoço)
+   ${answers[1]}
+
+   Algo te deixou supimpa? :P
+   ${answers[2]}
+
+   É isso que você acabou aprendendo hoje:
+   ${answers[3]}
+
+   Isso foi interessante, volte amanhã para responder mais perguntas
+  `)
 })
