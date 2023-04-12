@@ -5,13 +5,7 @@ const Perguntas = [
   "Aprendeu o que hoje?"
 ]
 
-const ask = (index = 0) => {
-  process.stdout.write("\n\n" + Perguntas[index] + " > ")
-}
 
-ask()
-
-const answers = []
 process.stdin.on('data', data => {
   answers.push(data.toString().trim())
   if (answers.length < Perguntas.length) {
@@ -22,6 +16,8 @@ process.stdin.on('data', data => {
 })
 
 process.on('exit', () => {
+
+
   console.log(`
    Ok agora vamos rever suas respostas
 
@@ -39,4 +35,13 @@ process.on('exit', () => {
 
    Isso foi interessante, volte amanhã para responder mais perguntas
   `)
+
+
 })
+const ask = (index = 0) => {
+  process.stdout.write("\n\n" + Perguntas[index] + " > ")
+}
+
+ask()
+
+const answers = []
